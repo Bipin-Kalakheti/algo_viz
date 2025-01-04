@@ -27,7 +27,7 @@ export const PathfindingProvider = ({
   children: React.ReactNode;
 }) => {
   const [algorithm, setAlgorithm] = useState<AlgorithmType>("breadthFirst");
-  const [maze, setMaze] = useState<MazeType>("random");
+  const [maze, setMaze] = useState<MazeType>("NONE");
   const [grid, setGrid] = useState<GridType>(
     createGrid(START_TILE_CONFIGURATION, END_TILE_CONFIGURATION)
   );

@@ -6,13 +6,15 @@ export type AlgorithmType =
   | "depthFirst";
 
 export type MazeType =
-  | "random"
-  | "recursiveDivision"
-  | "verticalDivision"
-  | "horizontalDivision"
-  | "binaryTree"
-  | "prim"
-  | "kruskal";
+  | "NONE"
+  | "BINARY_TREE"
+  | "RECURSIVE_DIVISION"
+;
+
+export interface MazeSelectType {
+  name: string;
+  value: MazeType;
+}
 
 export type TileType = {
   row: number;
