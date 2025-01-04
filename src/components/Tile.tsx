@@ -9,6 +9,10 @@ import {
   WALL_TILE_STYLE,
 } from "../utils/constants";
 
+interface MouseFunction {
+  (row: number, col: number): void;
+}
+
 export function Tile({
   row,
   col,
@@ -17,6 +21,9 @@ export function Tile({
   isVisited,
   isWall,
   isPath,
+  handleMouseDown,
+  handleMouseUp,
+  handleMouseEnter,
 }: {
   row: number;
   col: number;
@@ -25,6 +32,10 @@ export function Tile({
   isVisited: boolean;
   isWall: boolean;
   isPath: boolean;
+  handleMouseDown: MouseFunction;
+
+  handleMouseUp: MouseFunction;
+  handleMouseEnter: MouseFunction;
 }) {
   let tileTyleStyle;
 
@@ -32,12 +43,12 @@ export function Tile({
     tileTyleStyle = START_TILE_STYLE;
   } else if (isEnd) {
     tileTyleStyle = END_TILE_STYLE;
-  } else if (isVisited) {
-    tileTyleStyle = VISITED_TILE_STYLE;
   } else if (isWall) {
     tileTyleStyle = WALL_TILE_STYLE;
   } else if (isPath) {
     tileTyleStyle = PATH_TILE_STYLE;
+  } else if (isVisited) {
+    tileTyleStyle = VISITED_TILE_STYLE;
   } else {
     tileTyleStyle = TILE_STYLE;
   }
@@ -49,6 +60,9 @@ export function Tile({
     <div
       className={twMerge(tileTyleStyle, borderStyle, edgeStyle)}
       id={`${row} - ${col}`}
-    ></div>
+        onMouseDown={() => handleMouseDown(row, col)}
+        onMouseUp={() => handleMouseUp(row, col)}
+        onMouseEnter={() => handleMouseEnter(row, col)}
+    />
   );
 }
