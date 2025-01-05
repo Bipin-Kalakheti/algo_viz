@@ -5,15 +5,16 @@ export type AlgorithmType =
   | "breadthFirst"
   | "depthFirst";
 
-export type MazeType =
-  | "NONE"
-  | "BINARY_TREE"
-  | "RECURSIVE_DIVISION"
-;
+export type MazeType = "NONE" | "BINARY_TREE" | "RECURSIVE_DIVISION";
 
 export interface MazeSelectType {
   name: string;
   value: MazeType;
+}
+
+export interface AlgorithmSelectType {
+  name: string;
+  value: AlgorithmType;
 }
 
 export type TileType = {
@@ -29,7 +30,6 @@ export type TileType = {
 };
 
 export type GridType = TileType[][];
-
 
 export type SpeedType = 2 | 1 | 0.5;
 
