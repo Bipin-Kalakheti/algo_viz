@@ -1,5 +1,6 @@
 import { bfs } from "../lib/algorithms/pathfinding/bfs";
 import { dfs } from "../lib/algorithms/pathfinding/dfs";
+import { dijkstra } from "../lib/algorithms/pathfinding/dijkstra";
 import { AlgorithmType, GridType, TileType } from "./types";
 
 export const runPathfindingAlgorithm = ({
@@ -15,8 +16,7 @@ export const runPathfindingAlgorithm = ({
 }) => {
   switch (algorithm) {
     case "dijkstra":
-      console.log("Dijkstra");
-      break;
+      return dijkstra(grid, startTile, endTile);
     case "aStar":
       console.log("A*");
       break;
