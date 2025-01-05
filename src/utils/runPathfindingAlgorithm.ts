@@ -1,4 +1,5 @@
 import { bfs } from "../lib/algorithms/pathfinding/bfs";
+import { dfs } from "../lib/algorithms/pathfinding/dfs";
 import { AlgorithmType, GridType, TileType } from "./types";
 
 export const runPathfindingAlgorithm = ({
@@ -25,8 +26,7 @@ export const runPathfindingAlgorithm = ({
     case "breadthFirst":
       return bfs(grid, startTile, endTile);
     case "depthFirst":
-      console.log("Depth First");
-      break;
+      return dfs(grid, startTile, endTile);
     default:
       break;
   }
