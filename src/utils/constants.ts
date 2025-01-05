@@ -58,3 +58,4 @@ export const SPEEDS: SpeedSelectType[] = [
 
 
 export const SLEEP_TIME = 8;
+export const EXTENDED_SLEEP_TIME = 30;
