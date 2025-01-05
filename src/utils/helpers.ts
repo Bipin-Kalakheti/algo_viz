@@ -39,3 +39,21 @@ export const createNewGrid = (grid: GridType, row: number, col: number) => {
   newGrid[row][col] = newTile;
   return newGrid;
 };
+
+export const isEqual = (tile1: TileType, tile2: TileType) => {
+  return tile1.row === tile2.row && tile1.col === tile2.col;
+};
+
+export const isRowColEqual = (row: number, col: number, tile: TileType) => {
+  return row === tile.row && col === tile.col;
+};
+
+export const sleep = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export const getRandInt = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
