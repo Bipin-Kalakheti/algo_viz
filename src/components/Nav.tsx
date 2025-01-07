@@ -53,7 +53,9 @@ export function Nav({
   const handlerRunVisualizer = () => {
     if (isGraphVisualized) {
       setIsGraphVisualized(false);
+      console.log("resetting grid");
       resetGrid({ grid: grid.slice(), startTile, endTile });
+      return;
     }
     const { visitedTiles, path } = runPathfindingAlgorithm({
       algorithm,
@@ -73,41 +75,49 @@ export function Nav({
     }, SLEEP_TIME * (visitedTiles.length + SLEEP_TIME * 2) + EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find((s) => s.value === speed)!.value);
   };
   return (
-    <div className="flex items-center justify-center min-h-[4.5rem] border-b shadow-gray-600 sm:px-5 px-0">
-      <div className="flex items-center lg:justify-between justify-center w-full sm:w-[52rem]">
-        <h1 className="lg:flex hidden w-[40%] text-2xl pl-1">
-          Algo Visualizer
-        </h1>
-        <div className="flex sm:items-end items-center justify-start sm:justify-between sm:flex-row flex-col sm:space-y-0 space-y-3 sm:py-0 py-4 sm:space-x-4">
-          <Select
-            label="Maze"
-            value={maze}
-            options={MAZES}
-            onChange={(e) => {
-              handleGenerateMaze(e.target.value as MazeType);
-            }}
-          />
-          <Select
-            label="Graph"
-            value={algorithm}
-            options={PATHFINDING_ALGORITHMS}
-            onChange={(e) => {
-              setAlgorithm(e.target.value as AlgorithmType);
-            }}
-          />
-          <Select
-            label="Speed"
-            value={speed}
-            options={SPEEDS}
-            onChange={(e) => {
-              setSpeed(parseInt(e.target.value) as SpeedType);
-            }}
-          />
-          <PlayButton
-            isDisabled={isDisabled}
-            isGraphVisualized={isGraphVisualized}
-            handlerRunVisualizer={handlerRunVisualizer}
-          />
+    <div className="sticky top-0 z-50 backdrop-blur-sm bg-opacity-80 bg-gray-900 border-b border-gray-800 shadow-lg">
+      <div className="flex items-center justify-center min-h-[4.5rem] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center lg:justify-between justify-center w-full sm:w-[52rem]">
+          {/* Logo/Title */}
+          <h1 className="lg:flex hidden w-[40%] text-3xl font-extrabold pl-1 bg-gradient-to-r from-green-400 via-blue-500 to-purple-500 bg-clip-text text-transparent hover:from-purple-500 hover:via-blue-500 hover:to-green-400 transition-all duration-500 cursor-default">
+            PathViz
+          </h1>
+
+          {/* Controls Container */}
+          <div className="flex sm:items-end items-center justify-start sm:justify-between sm:flex-row flex-col gap-4 sm:gap-6 py-2 sm:py-0">
+            <Select
+              label="Maze"
+              value={maze}
+              options={MAZES}
+              isDisabled={isDisabled}
+              onChange={(e) => {
+                handleGenerateMaze(e.target.value as MazeType);
+              }}
+            />
+            <Select
+              label="Graph"
+              value={algorithm}
+              isDisabled={isDisabled}
+              options={PATHFINDING_ALGORITHMS}
+              onChange={(e) => {
+                setAlgorithm(e.target.value as AlgorithmType);
+              }}
+            />
+            <Select
+              label="Speed"
+              value={speed}
+              options={SPEEDS}
+              isDisabled={isDisabled}
+              onChange={(e) => {
+                setSpeed(parseInt(e.target.value) as SpeedType);
+              }}
+            />
+            <PlayButton
+              isDisabled={isDisabled}
+              isGraphVisualized={isGraphVisualized}
+              handlerRunVisualizer={handlerRunVisualizer}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -9,10 +9,31 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+
+  /* Updated background with a darker gradient */
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    /* Darker blue */ #1e1b4b 50%,
+    /* Deep purple */ #0f172a 100% /* Darker blue */
+  );
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add smooth scrolling and full height */
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Ensure the gradient covers the full viewport */
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-attachment: fixed;
 }

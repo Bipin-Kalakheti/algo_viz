@@ -11,7 +11,7 @@ export const bfs = (grid: GridType, startTile: TileType, endTile: TileType) => {
   const unVisited = [base];
 
   while (unVisited.length) {
-    const tile = unVisited.shift()!;
+    const tile = unVisited.shift() as TileType;
     if (tile.isWall) continue;
     if (tile.distance === Infinity) break;
     tile.isVisited = true;

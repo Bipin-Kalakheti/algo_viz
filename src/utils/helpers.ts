@@ -55,7 +55,7 @@ export const sleep = (ms: number) => {
 export const getRandInt = (min: number, max: number) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min) + min);
 };
 
 export const checkStack = (tile: TileType, stack: TileType[]) => {

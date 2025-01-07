@@ -34,6 +34,7 @@ export const resetGrid = ({
         tile.isStart = false;
         tile.isEnd = false;
       }
+      console.log("resetGrid -> tile", tile);
     }
   }
 };

@@ -54,15 +54,15 @@ export function Tile({
   }
 
   const borderStyle =
-    row === MAX_ROWS - 1 ? "border-b " : col === 0 ? "border-l" : "";
+    row === MAX_ROWS - 1 ? "border-b" : col === 0 ? "border-l" : "";
   const edgeStyle = row === MAX_ROWS - 1 && col === 0 ? "border-l" : "";
   return (
     <div
       className={twMerge(tileTyleStyle, borderStyle, edgeStyle)}
       id={`${row} - ${col}`}
-        onMouseDown={() => handleMouseDown(row, col)}
-        onMouseUp={() => handleMouseUp(row, col)}
-        onMouseEnter={() => handleMouseEnter(row, col)}
+      onMouseDown={() => handleMouseDown(row, col)}
+      onMouseUp={() => handleMouseUp(row, col)}
+      onMouseEnter={() => handleMouseEnter(row, col)}
     />
   );
 }
